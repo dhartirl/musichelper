@@ -1,6 +1,8 @@
 <?php
 
+
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+//$url = parse_url('mysql://homestead:secret@127.0.0.1/music');
 
 $host = $url["host"];
 $username = $url["user"];

@@ -20,6 +20,6 @@ Route::get('/scales', function (ScaleController $scale) {
     return $scale->index();
 });
 
-Route::get('/scales/{scale_id}', function (ScaleController $scale, $scaleId) {
-    return $scale->detail($scaleId);
+Route::get('/scales/{scale_id}/{root_note?}', function (ScaleController $scale, $scaleId, $rootNote = null) {
+    return $scale->detail($scaleId, $rootNote);
 });
