@@ -12,6 +12,7 @@ class CreateScaleIntervalIndexTable extends Migration
      */
     public function up()
     {
+
         Schema::create('scale_interval_index', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('scale', false, true);
