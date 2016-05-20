@@ -15,7 +15,7 @@ class CreateScaleIntervalIndexTable extends Migration
 
         Schema::create('scale_interval_index', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('scale', false, true);
+            $table->integer('scale');
             $table->integer('interval');
             $table->integer('index');
             $table->foreign('scale')->references('id')->on('scales');
