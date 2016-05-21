@@ -122,63 +122,63 @@
             }
 
             .note-0 {
-                border: 2px solid #cc0000;
-                color: #cc0000;
+                border: 2px solid #fff123;
+                color: #fff123;
             }
 
             .note-1 {
-                border: 2px solid #cccc00;
-                color: #cccc00;
+                border: 2px solid #ffa923;
+                color: #ffa923;
             }
 
             .note-2 {
-                border: 2px solid #00cccc;
-                color: #00cccc;
+                border: 2px solid #ff4c30;
+                color: #ff4c30;
             }
 
             .note-3 {
-                border: 2px solid #0000cc;
-                color: #0000cc;
+                border: 2px solid #ff2624;
+                color: #ff2624;
             }
 
             .note-4 {
-                border: 2px solid #cc00cc;
-                color: #cc00cc;
+                border: 2px solid #ff47ca;
+                color: #ff47ca;
             }
 
             .note-5 {
-                border: 2px solid #00cc00;
-                color: #00cc00;
+                border: 2px solid #9861ff;
+                color: #9861ff;
             }
 
             .note-6 {
-                border: 2px solid #cc0000;
-                color: #cc0000;
+                border: 2px solid #4c69ff;
+                color: #4c69ff;
             }
 
             .note-7 {
-                border: 2px solid #cc0000;
-                color: #cc0000;
+                border: 2px solid #4eb9ff;
+                color: #4eb9ff;
             }
 
             .note-8 {
-                border: 2px solid #cc0000;
-                color: #cc0000;
+                border: 2px solid #5cffea;
+                color: #5cffea;
             }
 
             .note-9 {
-                border: 2px solid #cc0000;
-                color: #cc0000;
+                border: 2px solid #45ff84;
+                color: #45ff84;
             }
 
             .note-10 {
-                border: 2px solid #cc0000;
-                color: #cc0000;
+                border: 2px solid #a8ff51;
+                color: #a8ff51;
             }
 
             .note-11 {
-                border: 2px solid #cc0000;
-                color: #cc0000;
+                border: 2px solid #ecff48;
+                color: #ecff48;
             }
 
             .notes-explain {
@@ -257,51 +257,51 @@
             
 
             .key-0 {
-                border-color: #cc0000;
+                border-color: #fff123;
             }
 
             .key-1, .key-1 .KeyboardLayout-key-internal {
-                border-color: #cccc00;
+                border-color: #ffa923;
             }
 
             .key-2, .key-2 .KeyboardLayout-key-internal {
-                border-color: #00cccc;
+                border-color: #ff4c30;
             }
 
             .key-3, .key-3 .KeyboardLayout-key-internal {
-                border-color: #0000cc;
+                border-color: #ff2624;
             }
 
             .key-4, .key-4 .KeyboardLayout-key-internal {
-                border-color: #cc00cc;
+                border-color: #ff47ca;
             }
 
             .key-5, .key-5 .KeyboardLayout-key-internal {
-                border-color: #00cc00;
+                border-color: #9861ff;
             }
 
             .key-6, .key-6 .KeyboardLayout-key-internal {
-                border-color: #cc0000;
+                border-color: #4c69ff;
             }
 
             .key-7, .key-7 .KeyboardLayout-key-internal {
-                border-color: #cc0000;
+                border-color: #4eb9ff;
             }
 
             .key-8, .key-8 .KeyboardLayout-key-internal {
-                border-color: #cc0000;
+                border-color: #5cffea;
             }
 
             .key-9, .key-9 .KeyboardLayout-key-internal {
-                border-color: #cc0000;
+                border-color: #45ff84;
             }
 
             .key-10, .key-10 .KeyboardLayout-key-internal {
-                border-color: #cc0000;
+                border-color: #a8ff51;
             }
 
             .key-11, .key-11 .KeyboardLayout-key-internal {
-                border-color: #cc0000;
+                border-color: #ecff48;
             }
 
         </style>
