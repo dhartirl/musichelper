@@ -209,11 +209,15 @@
             }
             
             @media (max-width: 35em) {
-                font-size: 0.7em;
+                .KeyboardLayout {
+                    font-size: 0.7em;
+                }
             }
             
             @media (max-width: 24em) {
-                font-size: 0.6em;
+                .KeyboardLayout {
+                    font-size: 0.6em;
+                }
             }
             
             .KeyboardLayout-key {
