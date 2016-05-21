@@ -208,6 +208,14 @@
                 border-top: 3px solid goldenrod;
             }
             
+            @media (max-width: 35em) {
+                font-size: 0.7em;
+            }
+            
+            @media (max-width: 24em) {
+                font-size: 0.6em;
+            }
+            
             .KeyboardLayout-key {
                 background: #fff;
                 width: 2em;
