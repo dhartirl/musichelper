@@ -309,7 +309,7 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $('.scale-title').on('click', function(event) {
-                    document.location = '/scales/' + $(this).parent().attr('class').match(/scale-(\d)/)[1];
+                    document.location = '/scales/' + $(this).parent().attr('class').match(/scale-(\d+)/)[1];
                 });
             });
         </script>
