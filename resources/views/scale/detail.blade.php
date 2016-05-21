@@ -1,7 +1,7 @@
 @extends('common.layout')
 @section('content')
     <div class="scale scale-{{$scale->id}}">
-        <div class="scale-title">Scale: @if ($root != null) {{$root->name}} @endif{{ $scale->name }}</div>
+        <div class="scale-title">@if ($root != null) {{$root->name}} @endif{{ $scale->name }}</div>
         @if(count($activeNotes) > 0)
             @include('common.keyboard')
         @endif
