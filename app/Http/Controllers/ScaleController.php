@@ -21,16 +21,19 @@ class ScaleController extends Controller
         $scale = Scale::find($scaleId);
         $intervals = $scale->intervals()->orderBy('index')->get();
         $allNotes = Note::all();
-
+        
+        $activeNotesArr = [];
+        
         if($rootNoteId != null) {
             foreach($intervals as $interval) {
                 $note = Note::find(($rootNoteId + $interval->length) % 12);
                 $interval['note'] = $note;
+                $activeNotesArr[] = $note->id;
             }
 
             $root = Note::find($rootNoteId);
         }
 
-        return view('scale.detail', ['scale' => $scale, 'intervals' => $intervals, 'root' => (isset($root) ? $root : null), 'allNotes' => $allNotes]);
+        return view('scale.detail', ['scale' => $scale, 'intervals' => $intervals, 'root' => (isset($root) ? $root : null), 'allNotes' => $allNotes, 'activeNotes' => $activeNotesArr]);
     }
 }
