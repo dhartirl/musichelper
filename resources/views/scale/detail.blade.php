@@ -4,6 +4,7 @@
         <div class="scale-title">@if ($root != null) {{$root->name}} @endif{{ $scale->name }}</div>
         @if(count($activeNotes) > 0)
             @include('common.keyboard')
+            @include('common.scaleControls')
         @endif
         <table class="scale-intervals">
         @foreach ($intervals as $interval)

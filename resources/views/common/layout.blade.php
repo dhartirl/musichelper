@@ -2,9 +2,66 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Laravel</title>
+        <title>Music Theory Helper</title>
+        
+        <!-- polyfill -->
+    	<script src="/js/shim/Base64.js" type="text/javascript"></script>
+    	<script src="/js/shim/Base64binary.js" type="text/javascript"></script>
+    	<script src="/js/shim/WebAudioAPI.js" type="text/javascript"></script>
+    	<!-- midi.js package -->
+    	<script src="/js/midi/audioDetect.js" type="text/javascript"></script>
+    	<script src="/js/midi/gm.js" type="text/javascript"></script>
+    	<script src="/js/midi/loader.js" type="text/javascript"></script>
+    	<script src="/js/midi/plugin.audiotag.js" type="text/javascript"></script>
+    	<script src="/js/midi/plugin.webaudio.js" type="text/javascript"></script>
+    	<script src="/js/midi/plugin.webmidi.js" type="text/javascript"></script>
+    	<!-- utils -->
+    	<script src="/js/util/dom_request_xhr.js" type="text/javascript"></script>
+    	<script src="/js/util/dom_request_script.js" type="text/javascript"></script>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
+
+        <script type="text/javascript">
+        function playScale(scale, octaveBegin = 48) {
+            var delay = 0;
+            var lastNote = 0;
+            if(scale.length < 8) {
+                scale.push(scale[0]);
+            }
+            scale.forEach(function(note) {
+                note += octaveBegin;
+                if (note < lastNote) note += 12;
+                lastNote = note;
+                delay++;
+                var velocity = 127; // how hard the note hits
+                // play the note
+                MIDI.setVolume(0, 127);
+                MIDI.noteOn(0, note, velocity, delay);
+                MIDI.noteOff(0, note, delay + 0.75);
+            });
+        }
+        window.onload = function () {
+            MIDI.loadPlugin({
+                soundfontUrl: "/soundfont/",
+                instrument: "acoustic_guitar_nylon",
+                onprogress: function(state, progress) {
+                    console.log(state, progress);
+                },
+                onsuccess: function() {
+                    MIDI.programChange(0, MIDI.GM.byName["acoustic_guitar_nylon"].number);
+                    window.noteOnCallback = function(note) {
+                        document.querySelector(".KeyboardLayout-key.key-" + (note % 12)).classList.add('is-playing');
+                        window.setTimeout(
+                            "document.querySelector('.KeyboardLayout-key.key-" + (note % 12) + "').classList.remove('is-playing')",
+                            750
+                        );
+                    };
+                    document.querySelector('.loadingNotify').innerHTML = "Note: First play may be out of order";
+                    document.querySelector('.playButton').classList.remove('is-hidden');
+                }
+            });
+        };
+        </script>
 
         <style>
             html, body {
@@ -251,10 +308,17 @@
                 border-bottom-style: solid;
             }
             
-            .key-active.key-sharp {
+            .is-playing, .is-playing.key-sharp .KeyboardLayout-key-internal {
+                border-bottom-width: 2em;
+            }
+            
+            .key-active.key-sharp, .key.is-playing.key-sharp {
                 border: none;
             }
             
+            .is-hidden {
+                display: none;
+            }
 
             .key-0 {
                 border-color: #fff123;
@@ -302,6 +366,30 @@
 
             .key-11, .key-11 .KeyboardLayout-key-internal {
                 border-color: #ecff48;
+            }
+            
+            .ScaleControls {
+                display: flex;
+                flex-direction: column;
+                padding: 0.5em;
+                text-align: center;
+            }
+            
+            .loadingNotify {
+                color: white;
+                margin: 1em auto;
+                font-size: 0.6em;
+            }
+            
+            .playButton {
+                padding: 0.5em 1em;
+                background: #000;
+                border: 2px solid #ccc;
+                color: #fff;
+                font-weight: 300;
+                font-size: 1.5rem;
+                font-family: 'Lato';
+                margin: 1em auto;
             }
 
         </style>
