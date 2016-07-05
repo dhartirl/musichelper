@@ -62,7 +62,12 @@ class CreateChordIntervalIndexTable extends Migration
             $this->createChordFromRelativeIntervalArray([3, 3], 5),
             $this->createChordFromRelativeIntervalArray([4, 3, 4], 6),
             $this->createChordFromRelativeIntervalArray([3, 4, 3], 7),
-            $this->createChordFromRelativeIntervalArray([4, 3, 3], 8)
+            $this->createChordFromRelativeIntervalArray([4, 3, 3], 8),
+            $this->createChordFromRelativeIntervalArray([6, 1], 9),
+            $this->createChordFromRelativeIntervalArray([2, 5], 10),
+            $this->createChordFromRelativeIntervalArray([4, 2, 4], 11),
+            $this->createChordFromRelativeIntervalArray([4, 3, 2], 12),
+            $this->createChordFromRelativeIntervalArray([3, 4, 2], 13)
         );
     }
 }

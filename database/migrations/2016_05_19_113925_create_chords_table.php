@@ -70,6 +70,36 @@ class CreateChordsTable extends Migration
                     'short_name' => 'dom7',
                     'notation_name' => '&#8311;',
                 ],
+                [
+                    'id' => 9,
+                    'name' => 'Suspended Fourth',
+                    'short_name' => 'sus4',
+                    'notation_name' => 'sus4',
+                ],
+                [
+                    'id' => 10,
+                    'name' => 'Suspended Second',
+                    'short_name' => 'sus2',
+                    'notation_name' => 'sus2',
+                ],
+                [
+                    'id' => 11,
+                    'name' => 'Dominant Seventh Flat Five',
+                    'short_name' => '7&#9837;5',
+                    'notation_name' => '7&#9837;5',
+                ],
+                [
+                    'id' => 12,
+                    'name' => 'Major Sixth',
+                    'short_name' => 'maj6',
+                    'notation_name' => '6',
+                ],
+                [
+                    'id' => 13,
+                    'name' => 'Minor Sixth',
+                    'short_name' => 'min6',
+                    'notation_name' => 'm6',
+                ],
             ]
         );
     }
