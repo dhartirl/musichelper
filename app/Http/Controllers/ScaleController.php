@@ -47,7 +47,7 @@ class ScaleController extends Controller
                 'relatedChords' => $chords,
                 'builder' => $this->builderData($scaleId, $rootNoteId)
             ];
-            Cache::put($key, $retData, 10);
+            Cache::put($key, $retData, 3600);
         }
         return view('scale.detail', $retData);
     }
