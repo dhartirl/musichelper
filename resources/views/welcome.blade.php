@@ -4,7 +4,8 @@
         <title>Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
+        
+        <link rel="stylesheet" href="/css/main.css">
         <style>
             html, body {
                 height: 100%;
@@ -28,17 +29,27 @@
             .content {
                 text-align: center;
                 display: inline-block;
+                width: 100%;
             }
 
             .title {
                 font-size: 96px;
+                display: flex;
+                color: white;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">
+                    <div class="width50">
+                        <a class="blockyLink" href="/scales">Scales</a>
+                    </div>
+                    <div class="width50">
+                        <a class="blockyLink" href="/chords">Chords</a>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ScaleController;
+use App\Http\Controllers\ChordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,12 @@ Route::get('/scales', function (ScaleController $scale) {
 
 Route::get('/scales/{scale_id}/{root_note?}', function (ScaleController $scale, $scaleId, $rootNote = null) {
     return $scale->detail($scaleId, $rootNote);
+});
+
+Route::get('/chords', function (ChordController $chord) {
+    return $chord->index();
+});
+
+Route::get('/chords/{chord_id}/{root_note?}', function (ChordController $chord, $chordId, $rootNote = null) {
+    return $chord->detail($chordId, $rootNote);
 });

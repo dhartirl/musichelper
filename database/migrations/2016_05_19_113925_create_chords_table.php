@@ -13,11 +13,11 @@ class CreateChordsTable extends Migration
     public function up()
     {
         Schema::create('chords', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id');
             $table->string('name');
             $table->string('short_name');
             $table->string('notation_name');
-            $table->timestamps();
+            $table->primary('id');
         });
 
         DB::table('chords')->insert(
@@ -44,31 +44,31 @@ class CreateChordsTable extends Migration
                     'id' => 4,
                     'name' => 'Augmented',
                     'short_name' => 'aug',
-                    'notation_name' => '^+^',
+                    'notation_name' => '&#8314',
                 ],
                 [
                     'id' => 5,
                     'name' => 'Diminished',
                     'short_name' => 'dim',
-                    'notation_name' => '^o^',
+                    'notation_name' => '&#176;',
                 ],
                 [
                     'id' => 6,
                     'name' => 'Major Seventh',
-                    'short_name' => 'Maj^7^',
-                    'notation_name' => 'Δ^7^',
+                    'short_name' => 'Maj&#8311;',
+                    'notation_name' => 'Δ&#8311;',
                 ],
                 [
                     'id' => 7,
                     'name' => 'Minor Seventh',
-                    'short_name' => 'min^7^',
-                    'notation_name' => 'm^7^',
+                    'short_name' => 'min&#8311;',
+                    'notation_name' => 'm&#8311;',
                 ],
                 [
                     'id' => 8,
                     'name' => 'Dominant Seventh',
                     'short_name' => 'dom7',
-                    'notation_name' => '^7^',
+                    'notation_name' => '&#8311;',
                 ],
             ]
         );

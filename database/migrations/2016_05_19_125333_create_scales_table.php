@@ -16,7 +16,6 @@ class CreateScalesTable extends Migration
             $table->integer('id');
             $table->string('name');
             $table->primary('id');
-            $table->timestamps();
         });
 
         DB::table('scales')->insert(
@@ -64,6 +63,34 @@ class CreateScalesTable extends Migration
                 [
                     'id' => 11,
                     'name' => 'Locrian',
+                ],
+                [
+                    'id' => 12,
+                    'name' => 'Harmonic Minor',
+                ],
+                [
+                    'id' => 13,
+                    'name' => 'Locrian #6',
+                ],
+                [
+                    'id' => 14,
+                    'name' => 'Ionian #5',
+                ],
+                [
+                    'id' => 15,
+                    'name' => 'Dorian #4',
+                ],
+                [
+                    'id' => 16,
+                    'name' => 'Phrygian Dominant',
+                ],
+                [
+                    'id' => 17,
+                    'name' => 'Lydian #2',
+                ],
+                [
+                    'id' => 18,
+                    'name' => 'Superlocrian',
                 ],
             ]
         );

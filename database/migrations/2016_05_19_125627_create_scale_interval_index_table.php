@@ -20,12 +20,12 @@ class CreateScaleIntervalIndexTable extends Migration
             $table->integer('index');
             $table->foreign('scale')->references('id')->on('scales');
             $table->foreign('interval')->references('length')->on('intervals');
-            $table->timestamps();
         });
 
         $scales = array_merge(
             $this->createBaseScales(),
-            $this->createBaseModes()
+            $this->createBaseModes(),
+            $this->createHarmonicModes()
         );
         DB::table('scale_interval_index')->insert($scales);
     }
@@ -80,6 +80,17 @@ class CreateScaleIntervalIndexTable extends Migration
         $baseScale = [2, 2, 1, 2, 2, 2, 1];
         $ret = [];
         $startIndex = 5;
+        for($i = 0; $i < 7; $i++) {
+            $ret = array_merge($ret, $this->createScaleFromRelativeIntervalArray($this->createModeFromScale($baseScale, $i), $startIndex));
+            $startIndex++;
+        }
+        return $ret;
+    }
+
+    private function createHarmonicModes() {
+        $baseScale = [2, 1, 2, 2, 1, 3, 1];
+        $ret = [];
+        $startIndex = 12;
         for($i = 0; $i < 7; $i++) {
             $ret = array_merge($ret, $this->createScaleFromRelativeIntervalArray($this->createModeFromScale($baseScale, $i), $startIndex));
             $startIndex++;

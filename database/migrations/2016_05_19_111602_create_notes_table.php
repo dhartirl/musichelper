@@ -16,7 +16,6 @@ class CreateNotesTable extends Migration
             $table->integer('id');
             $table->string('name');
             $table->primary('id');
-            $table->timestamps();
         });
 
         DB::table('notes')->insert(
