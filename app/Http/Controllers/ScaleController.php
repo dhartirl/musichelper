@@ -45,21 +45,14 @@ class ScaleController extends Controller
                 'allNotes' => $allNotes, 
                 'activeNotes' => $activeNotesArr, 
                 'relatedChords' => $chords,
-                'builder' => $this->builderData($scaleId, $rootNoteId)
+                'builder' => $this->builderData($scale, $chords, $intervals, $rootNoteId)
             ];
             Cache::put($key, $retData, 3600);
         }
         return view('scale.detail', $retData);
     }
     
-    function builderData($scaleId, $rootNoteId) {
-        $scale = Scale::find($scaleId);
-        $chords = $scale->chords($rootNoteId);
-        foreach($chords as $chord) {
-            unset($chord['chord']);
-            unset($chord['root']);
-        }
-        $intervals = $scale->intervals()->orderBy('index')->get();
+    function builderData($scale, $chords, $intervals, $rootNoteId) {
         return [
             'root' => json_encode(Note::find($rootNoteId)),
             'scale' => json_encode($scale),

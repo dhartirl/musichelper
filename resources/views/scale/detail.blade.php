@@ -27,16 +27,20 @@
 @section('content')
     <div class="progression progression-{{$scale->id}}">
         <div class="progression-title">@if ($root != null) {{$root->name}} @endif{{ $scale->name }}</div>
+        <div class="note-options">
+            <span class="notes-explain">View in:</span>
+            <div class="notes-choices">
+                @foreach ($allNotes as $note)
+                    <a href="/scales/{{$scale->id}}/{{$note->id}}/" class="note-box note-{{$note->id}}">{{$note->name}}</a>
+                @endforeach
+            </div>
+        </div>
         @if(count($activeNotes) > 0)
             @include('common.keyboard')
             @include('common.scaleControls')
         @endif
-        <div class="progression-builder">
-            <div id="interval_section"></div>
-            <div id="chord_section"></div>
-            <div id="builder_controls"><button id="add_button">Add Interval</button><button id="remove_button">Remove Interval</button><button id="play_button">Play</button></div>
-        </div>
-        <table class="progression-intervals">
+        <h2 class="section-title js-expandTitle">Intervals Table</h2>
+        <table class="progression-intervals js-expandContent expandHidden">
         @foreach ($intervals as $interval)
             <tr class="progression-interval">
                 <th class="interval-length">{{$interval->length}}</th>
@@ -47,25 +51,25 @@
             </tr>
         @endforeach
         </table>
-    </div>
-    <div class="note-options">
-        <span class="notes-explain">View this scale in the key of:</span>
-        <div class="notes-choices">
-            @foreach ($allNotes as $note)
-                <a href="/scales/{{$scale->id}}/{{$note->id}}/" class="note-box note-{{$note->id}}">{{$note->name}}</a>
-            @endforeach
+        <h2 class="section-title js-expandTitle">Progression Builder</h2>
+        <div class="progression-builder js-expandContent expandHidden">
+            <div id="builder_selectors">
+                <div id="interval_section"></div>
+                <div id="chord_section"></div>
+            </div>
+            <div id="builder_controls"><button id="add_button">Add Interval</button><button id="remove_button">Remove Interval</button><button id="play_button">Play</button></div>
         </div>
-    </div>
-    <div class="related-items">
-        <span class="related-explain">Chords in this scale:</span>
-        <div class="notes-choices">
-            @foreach ($relatedChords as $chord)
-                <div class="note-box note-{{$chord['root']->id}}">
-                    @include('chord._preview', ['chord' => $chord])
-                    <a class="noLink" href="/chords/{{$chord['chord']->id}}/{{$chord['root']->id}}/">{{$chord['root']->name}}{!!$chord['chord']->notation_name!!}</a>
-                    <a class="noLink" href="javascript:void(0);" class="chord-play" onClick="playChord({{$chord['jsonData']}});">&#9654;</a>
-                </div>
-            @endforeach
+        <h2 class="section-title js-expandTitle">Chords in Scale</h2>
+        <div class="related-items js-expandContent expandHidden">
+            <div class="notes-choices">
+                @foreach ($relatedChords as $chord)
+                    <div class="note-box note-{{$chord['root']['id']}}">
+                        @include('chord._preview', ['chord' => $chord])
+                        <a class="noLink" href="/chords/{{$chord['id']}}/{{$chord['root']['id']}}/">{{$chord['root']['name']}}{!!$chord['notation_name']!!}</a>
+                        <a class="noLink" href="javascript:void(0);" class="chord-play" onClick="playChord({{$chord['playData']}});">&#9654;</a>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 @endsection

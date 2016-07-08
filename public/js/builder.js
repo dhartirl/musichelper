@@ -13,7 +13,7 @@ var Builder = function(chords, scale, root, intervals) {
       if((interval.length + root.id) % 12 == chord.root.id) {
         arrInterval.note = chord.root;
         arrInterval.availableChords.push({
-          name: chord.root.name + chord.chord.notation_name,
+          name: chord.root.name + chord.notation_name,
           notes: chord.notes,
           playData: chord.jsonData
         });
@@ -44,8 +44,11 @@ Builder.prototype.setChords = function(chordIds) {
 
 Builder.prototype.play = function(noteLength = 1) {
   var delay = 0;
+  var self = this;
   this.progressionChords.forEach(function(item) {
-    playChord(item.notes.map(function(note){return note.id}), 48, delay, noteLength);
+    var offset = 48;
+    if(item.notes[0].id < self.root.id) offset += 12;
+    playChord(item.notes.map(function(note){return note.id}), offset, delay, noteLength);
     delay += noteLength;
   });
 }

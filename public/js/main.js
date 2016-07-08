@@ -19,6 +19,7 @@ function playScale(scale, octaveBegin = 48, delay = 0) {
 function playChord(chord, octaveBegin = 48, delay = 0, noteLength = 1) {
     var lastNote = 0;
     chord.forEach(function(note) {
+        note = parseInt(note);
         note += octaveBegin;
         if (note < lastNote) note += 12;
         lastNote = note;
@@ -47,5 +48,8 @@ window.onload = function() {
             document.querySelector('.loadingNotify').innerHTML = "Note: First play may be out of order";
             document.querySelector('.playButton').classList.remove('is-hidden');
         }
+    });
+    $('body').on('click', '.js-expandTitle', function(event) {
+        $(this).next('.js-expandContent').toggleClass('expandHidden');
     });
 };

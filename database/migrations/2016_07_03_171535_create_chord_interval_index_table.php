@@ -45,7 +45,7 @@ class CreateChordIntervalIndexTable extends Migration
         for($i = 0; $i < count($intervals); $i++) {
             $ret[] = [
                 'chord' => $chordId,
-                'interval' => $currentInterval + $intervals[$i] + 1, // (+1 added for 0-1 offset on length vs id)
+                'interval' => $currentInterval + $intervals[$i],
                 'index' => $i,
             ];
             $currentInterval += $intervals[$i];

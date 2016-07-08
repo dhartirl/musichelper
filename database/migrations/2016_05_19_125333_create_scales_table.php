@@ -21,75 +21,75 @@ class CreateScalesTable extends Migration
         DB::table('scales')->insert(
             [
                 [
-                    'id' => 1,
+                    'id' => 0,
                     'name' => 'Major',
                 ],
                 [
-                    'id' => 2,
+                    'id' => 1,
                     'name' => 'Natural Minor',
                 ],
                 [
-                    'id' => 3,
+                    'id' => 2,
                     'name' => 'Harmonic Minor',
                 ],
                 [
-                    'id' => 4,
+                    'id' => 3,
                     'name' => 'Melodic Minor',
                 ],
                 [
-                    'id' => 5,
+                    'id' => 4,
                     'name' => 'Ionian',
                 ],
                 [
-                    'id' => 6,
+                    'id' => 5,
                     'name' => 'Dorian',
                 ],
                 [
-                    'id' => 7,
+                    'id' => 6,
                     'name' => 'Phrygian',
                 ],
                 [
-                    'id' => 8,
+                    'id' => 7,
                     'name' => 'Lydian',
                 ],
                 [
-                    'id' => 9,
+                    'id' => 8,
                     'name' => 'Mixolydian',
                 ],
                 [
-                    'id' => 10,
+                    'id' => 9,
                     'name' => 'Aeolian',
                 ],
                 [
-                    'id' => 11,
+                    'id' => 10,
                     'name' => 'Locrian',
                 ],
                 [
-                    'id' => 12,
+                    'id' => 11,
                     'name' => 'Harmonic Minor',
                 ],
                 [
-                    'id' => 13,
+                    'id' => 12,
                     'name' => 'Locrian #6',
                 ],
                 [
-                    'id' => 14,
+                    'id' => 13,
                     'name' => 'Ionian #5',
                 ],
                 [
-                    'id' => 15,
+                    'id' => 14,
                     'name' => 'Dorian #4',
                 ],
                 [
-                    'id' => 16,
+                    'id' => 15,
                     'name' => 'Phrygian Dominant',
                 ],
                 [
-                    'id' => 17,
+                    'id' => 16,
                     'name' => 'Lydian #2',
                 ],
                 [
-                    'id' => 18,
+                    'id' => 17,
                     'name' => 'Superlocrian',
                 ],
             ]

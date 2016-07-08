@@ -48,7 +48,7 @@ class CreateScaleIntervalIndexTable extends Migration
         for($i = 0; $i < count($intervals) - 1; $i++) {
             $ret[] = [
                 'scale' => $scaleId,
-                'interval' => $currentInterval + $intervals[$i] + 1, // (+1 added for 0-1 offset on length vs id)
+                'interval' => $currentInterval + $intervals[$i],
                 'index' => $i,
             ];
             $currentInterval += $intervals[$i];
@@ -62,10 +62,10 @@ class CreateScaleIntervalIndexTable extends Migration
 
     private function createBaseScales() {
         return array_merge(
-            $this->createScaleFromRelativeIntervalArray([2, 2, 1, 2, 2, 2, 1], 1),
-            $this->createScaleFromRelativeIntervalArray([2, 1, 2, 2, 1, 2, 2], 2),
-            $this->createScaleFromRelativeIntervalArray([2, 1, 2, 2, 1, 3, 1], 3),
-            $this->createScaleFromRelativeIntervalArray([2, 1, 2, 2, 2, 2, 1], 4)
+            $this->createScaleFromRelativeIntervalArray([2, 2, 1, 2, 2, 2, 1], 0),
+            $this->createScaleFromRelativeIntervalArray([2, 1, 2, 2, 1, 2, 2], 1),
+            $this->createScaleFromRelativeIntervalArray([2, 1, 2, 2, 1, 3, 1], 2),
+            $this->createScaleFromRelativeIntervalArray([2, 1, 2, 2, 2, 2, 1], 3)
         );
     }
 
@@ -79,7 +79,7 @@ class CreateScaleIntervalIndexTable extends Migration
     private function createBaseModes() {
         $baseScale = [2, 2, 1, 2, 2, 2, 1];
         $ret = [];
-        $startIndex = 5;
+        $startIndex = 4;
         for($i = 0; $i < 7; $i++) {
             $ret = array_merge($ret, $this->createScaleFromRelativeIntervalArray($this->createModeFromScale($baseScale, $i), $startIndex));
             $startIndex++;
@@ -90,7 +90,7 @@ class CreateScaleIntervalIndexTable extends Migration
     private function createHarmonicModes() {
         $baseScale = [2, 1, 2, 2, 1, 3, 1];
         $ret = [];
-        $startIndex = 12;
+        $startIndex = 11;
         for($i = 0; $i < 7; $i++) {
             $ret = array_merge($ret, $this->createScaleFromRelativeIntervalArray($this->createModeFromScale($baseScale, $i), $startIndex));
             $startIndex++;
