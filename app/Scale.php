@@ -31,7 +31,8 @@ class Scale extends Model
         if($out = Cache::get($key) !== false) {
             $results = DB::select('
                 select 
-                    i.length as root_offset, 
+                    i.length as note_id, 
+                    i.length - ? as root_offset,
                     n.name as root_name, 
                     c.id as chord_id, 
                     c.name as chord_name, 
@@ -60,13 +61,13 @@ class Scale extends Model
                     group by chord, root_id
                 ) chordmatch
                 on c.id = chordmatch.chord
-                inner join intervals i on i.id = chordmatch.root_id
+                inner join intervals i on i.id = (chordmatch.root_id + ?) % 12
                 inner join notes n on n.id = i.id
                 inner join chord_interval_index ci on ci.chord = c.id
                 where chordmatch.nulcount = 0
                 group by root_offset, chord_id
-                order by root_offset, chord_id asc
-            ', [$this->id]);
+                order by (root_offset >= 0) desc, root_offset asc, chord_id asc
+            ', [$root, $this->id, $root]);
             $out = [];
             foreach($results as $result) {
                 $cnotes = explode(',', $result->chord_notes);
@@ -80,7 +81,7 @@ class Scale extends Model
                     'name' => $result->chord_name,
                     'notation_name' => $result->chord_n_name,
                     'root' => [
-                        'id' => $result->root_offset,
+                        'id' => $result->note_id,
                         'name' => $result->root_name
                     ],
                     'playData' => json_encode($cnotes),
