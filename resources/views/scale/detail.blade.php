@@ -1,6 +1,7 @@
 @extends('common.layout')
 @section('head')
-    <script type="text/javascript" src="/js/builder.js"></script>
+    <script type="text/javascript" src="/js/classes/builder.js"></script>
+    <script type="text/javascript" src="/js/classes/chord.js"></script>
     <script type="text/javascript">
         var builder;
         $(document).ready(function() {

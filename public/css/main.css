@@ -129,6 +129,7 @@ body {
     text-decoration: none;
     position: relative;
     cursor: pointer;
+    flex-grow: 1;
 }
 .note-0 {
     border: 2px solid #fff123;
@@ -339,6 +340,7 @@ body {
     flex-basis: 3em;
     flex-grow: 0;
     flex-shrink: 1;
+    flex-basis: 5em;
 }
 #builder_controls button {
     padding: 0.5em 1em;
