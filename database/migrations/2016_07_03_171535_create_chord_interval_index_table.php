@@ -45,7 +45,7 @@ class CreateChordIntervalIndexTable extends Migration
         for($i = 0; $i < count($intervals); $i++) {
             $ret[] = [
                 'chord' => $chordId,
-                'interval' => $currentInterval + $intervals[$i],
+                'interval' => ($currentInterval + $intervals[$i]),
                 'index' => $i,
             ];
             $currentInterval += $intervals[$i];
@@ -67,7 +67,11 @@ class CreateChordIntervalIndexTable extends Migration
             $this->createChordFromRelativeIntervalArray([2, 5], 10),
             $this->createChordFromRelativeIntervalArray([4, 2, 4], 11),
             $this->createChordFromRelativeIntervalArray([4, 3, 2], 12),
-            $this->createChordFromRelativeIntervalArray([3, 4, 2], 13)
+            $this->createChordFromRelativeIntervalArray([3, 4, 2], 13),
+            $this->createChordFromRelativeIntervalArray([4, 3, 4, 3], 14),
+            $this->createChordFromRelativeIntervalArray([3, 4, 4, 2], 15),
+            $this->createChordFromRelativeIntervalArray([3, 4, 3, 3], 16),
+            $this->createChordFromRelativeIntervalArray([3, 4, 6], 17)
         );
     }
 }

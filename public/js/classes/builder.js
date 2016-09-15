@@ -1,21 +1,21 @@
 var Builder = function(chords, scale, root, intervals) {
-  this.allChords = chords;
   this.scale = scale;
   this.root = root;
   this.intervals = [];
+  this.allChords = this.getChordData(chords);
   var context = this;
   intervals.forEach(function(interval, index) {
     var arrInterval = {
       note: {},
       availableChords: []
     };
-    chords.forEach(function(chord) {
+    context.allChords.forEach(function(chord) {
       if((interval.length + root.id) % 12 == chord.root.id) {
         arrInterval.note = chord.root;
         arrInterval.availableChords.push({
           name: chord.root.name + chord.notation_name,
           notes: chord.notes,
-          playData: chord.jsonData
+          chordObject: chord.chordObject
         });
       }
     });
@@ -28,6 +28,9 @@ var Builder = function(chords, scale, root, intervals) {
 Builder.prototype.setProgression = function(progression, redraw = true) {
   for (var i = 0; i < progression.length; i++) {
     progression[i]--;
+    if (typeof(this.progression) !== 'undefined' && progression[i] != this.progression[i]) {
+      this.progressionChords[i] = this.intervals[progression[i]].availableChords[0];
+    }
   }
   this.progression = progression;
   if(redraw) this.draw();
@@ -37,7 +40,12 @@ Builder.prototype.setChords = function(chordIds) {
   var self = this;
   var updatedChords = [];
   chordIds.forEach(function(chordId, index) {
-    updatedChords.push(self.intervals[self.progression[index]].availableChords[chordId]);
+    var t = self.intervals[self.progression[index]].availableChords[chordId];
+    updatedChords.push({
+      name: t.name,
+      notes: t.notes,
+      chordObject: t.chordObject.clone()
+    });
   });
   this.progressionChords = updatedChords;
 };
@@ -46,9 +54,7 @@ Builder.prototype.play = function(noteLength = 1) {
   var delay = 0;
   var self = this;
   this.progressionChords.forEach(function(item) {
-    var offset = 48;
-    if(item.notes[0].id < self.root.id) offset += 12;
-    playChord(item.notes.map(function(note){return note.id}), offset, delay, noteLength);
+    item.chordObject.play(delay);
     delay += noteLength;
   });
 }
@@ -96,7 +102,25 @@ Builder.prototype.getChordSelectorHTML = function() {
   return retHtml;
 };
 
+Builder.prototype.getChordEditorHTML = function() {
+  var retHtml = '';
+  var self = this;
+  this.progression.forEach(function(item, index) {
+    retHtml += '<button class="chord-edit" onClick="builder.progressionChords[' + index + '].chordObject.edit(' + index + ')">Edit</button>';
+  });
+  return retHtml;
+};
+
+Builder.prototype.getChordData = function(chords) {
+  var self = this;
+  chords.forEach(function(chord) {
+    chord.chordObject = new Chord(chord.notes.map(function(a){return a.id}), self.root.id);
+  });
+  return chords;
+}
+
 Builder.prototype.draw = function() {
   $('#interval_section').html(builder.getIntervalSelectorHTML());
   $('#chord_section').html(builder.getChordSelectorHTML());
+  $('#chord_edit_section').html(builder.getChordEditorHTML());
 };

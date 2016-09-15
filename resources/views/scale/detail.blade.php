@@ -22,9 +22,27 @@
             $('#builder_controls').on('click', '#remove_button', function() {
                 builder.removeInterval();
             });
+            $('#chordEditForm').on('submit', function() {
+                var ind = parseInt($('#chordEditId').val());
+                var inv = parseInt($('#chordEditInversion').val());
+                var oct = parseInt($('#chordEditOctave').val());
+                builder.progressionChords[ind].chordObject.inversion = inv;
+                builder.progressionChords[ind].chordObject.octaveShift = oct;
+                $('#modalFormInner').html("");
+                $('.modalOverlay').addClass("is-hidden");
+            });
         });
     </script>
 @endsection
+
+@section('forms')
+    <form id="chordEditForm" class="modalForm" action="javascript:void(0);" method="post">
+        <h3 class="modalFormHeader">Edit Chord</h3>
+        <div id="modalFormInner"></div>
+        <input type="submit" class="modalFormSubmit">
+    </form>
+@endsection
+
 @section('content')
     <div class="progression progression-{{$scale->id}}">
         <div class="progression-title">@if ($root != null) {{$root->name}} @endif{{ $scale->name }}</div>
@@ -57,6 +75,7 @@
             <div id="builder_selectors">
                 <div id="interval_section"></div>
                 <div id="chord_section"></div>
+                <div id="chord_edit_section"></div>
             </div>
             <div id="builder_controls"><button id="add_button">Add Interval</button><button id="remove_button">Remove Interval</button><button id="play_button">Play</button></div>
         </div>

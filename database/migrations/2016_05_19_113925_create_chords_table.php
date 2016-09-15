@@ -100,6 +100,30 @@ class CreateChordsTable extends Migration
                     'short_name' => 'min6',
                     'notation_name' => 'm6',
                 ],
+                [
+                    'id' => 14,
+                    'name' => 'Major Ninth',
+                    'short_name' => 'maj9',
+                    'notation_name' => 'Δ9',
+                ],
+                [
+                    'id' => 15,
+                    'name' => 'Minor Ninth',
+                    'short_name' => 'min9',
+                    'notation_name' => 'm9',
+                ],
+                [
+                    'id' => 16,
+                    'name' => 'Dominant Minor Ninth',
+                    'short_name' => 'minmaj9',
+                    'notation_name' => '9',
+                ],
+                [
+                    'id' => 17,
+                    'name' => 'Added Ninth',
+                    'short_name' => 'add9',
+                    'notation_name' => 'add9',
+                ],
             ]
         );
     }

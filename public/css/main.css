@@ -130,6 +130,7 @@ body {
     position: relative;
     cursor: pointer;
     flex-grow: 1;
+    text-align: center;
 }
 .note-0 {
     border: 2px solid #fff123;
@@ -244,9 +245,6 @@ body {
 .key-active.key-sharp, .key.is-playing.key-sharp {
     border: none;
 }
-.is-hidden {
-    display: none;
-}
 .key-0 {
     border-color: #fff123;
 }
@@ -328,7 +326,7 @@ body {
     display: flex;
     flex-direction: column;
 }
-#interval_section, #chord_section {
+#interval_section, #chord_section, #chord_edit_section {
     display: flex;
     padding: 0.2em 0;
     justify-content: center;
@@ -337,7 +335,13 @@ body {
 #builder_selectors select {
     font-size: 0.7em;
     margin: auto 0.5em;
-    flex-basis: 3em;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 5em;
+}
+#builder_selectors button {
+    font-size: 0.7em;
+    margin: auto 0.5em;
     flex-grow: 0;
     flex-shrink: 1;
     flex-basis: 5em;
@@ -358,7 +362,7 @@ body {
     padding-top: 1em;
 }
 @media (max-width: 35em) {
-  #interval_section, #chord_section {
+  #interval_section, #chord_section, #chord_edit_section {
     flex-direction: column;
   }
   #builder_selectors {
@@ -391,4 +395,64 @@ body {
     justify-content: center;
     font-size: 0.5em;
     flex-wrap: wrap;
+}
+.modalOverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(30, 30, 30, 0.5);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modalFormContainer {
+    background: #222;
+    border: 2px solid #fff;
+    padding: 1em;
+}
+.modalFormHeader {
+    color: #fff;
+    text-align: center;
+    margin-top: 0;
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+.modalFormSubmit {
+    font-size: 0.6em;
+    background: linear-gradient(#aa66cc, #aa55bb);
+    border-radius: 0.2em;
+    border-style: none;
+    padding: 0.5em 1em;
+    color: #fff;
+    margin: auto;
+    margin-top: 1em;
+    display: block;
+}
+.modalForm {
+    color: #fff;
+}
+.inputWrap {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.6em;
+}
+.inputWrap label {
+    flex-grow: 1;
+}
+.inputWrap input {
+    width: 40%;
+    flex-grow: 0;
+}
+.inputWrap .rangeVal {
+    padding-left: 0.3em;
+    text-align: center;
+}
+
+
+/* Utils */
+.is-hidden {
+    display: none;
 }

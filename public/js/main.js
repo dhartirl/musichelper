@@ -16,6 +16,28 @@ function playScale(scale, octaveBegin = 48, delay = 0) {
     });
 }
 
+function noteToObject(noteId) {
+    var allNotes = [
+      "C",
+      "C#",
+      "D",
+      "D#",
+      "E",
+      "F",
+      "F#",
+      "G",
+      "G#",
+      "A",
+      "A#",
+      "B"
+    ];
+    
+    return {
+      'id': noteId,
+      'name': allNotes[noteId]
+    };
+}
+
 function playChord(chord, octaveBegin = 48, delay = 0, noteLength = 1) {
     var lastNote = 0;
     chord.forEach(function(note) {
@@ -51,5 +73,8 @@ window.onload = function() {
     });
     $('body').on('click', '.js-expandTitle', function(event) {
         $(this).next('.js-expandContent').toggleClass('expandHidden');
+    });
+    $('body').on('input', '.rangeSelf', function(event) {
+        $(this).next('.rangeVal').text(this.value);
     });
 };

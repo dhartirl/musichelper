@@ -96,6 +96,66 @@ class CreateIntervalsTable extends Migration
                     'name' => 'major seventh',
                     'interval_notation' => 'if you see this something is wrong',
                 ],
+                [
+                    'id' => 12,
+                    'length' => 12,
+                    'name' => 'octave',
+                    'interval_notation' => '',
+                ],
+                [
+                    'id' => 13,
+                    'length' => 13,
+                    'name' => 'minor ninth',
+                    'interval_notation' => '',
+                ],
+                [
+                    'id' => 14,
+                    'length' => 14,
+                    'name' => 'major ninth',
+                    'interval_notation' => '',
+                ],
+                [
+                    'id' => 15,
+                    'length' => 15,
+                    'name' => 'minor tenth',
+                    'interval_notation' => '',
+                ],
+                [
+                    'id' => 16,
+                    'length' => 16,
+                    'name' => 'major tenth',
+                    'interval_notation' => '',
+                ],
+                [
+                    'id' => 17,
+                    'length' => 17,
+                    'name' => 'perfect eleventh',
+                    'interval_notation' => '',
+                ],
+                [
+                    'id' => 18,
+                    'length' => 18,
+                    'name' => 'tritone +1',
+                    'interval_notation' => '',
+                ],
+                [
+                    'id' => 19,
+                    'length' => 19,
+                    'name' => 'perfect twlefth (tritave)',
+                    'interval_notation' => '',
+                ],
+                [
+                    'id' => 20,
+                    'length' => 20,
+                    'name' => 'minor thirteenth',
+                    'interval_notation' => '',
+                ],
+                [
+                    'id' => 21,
+                    'length' => 21,
+                    'name' => 'major thirteenth',
+                    'interval_notation' => '',
+                ],
             ]
         );
     }

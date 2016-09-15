@@ -24,10 +24,15 @@
         <script type="text/javascript" src="/js/main.js"></script>
 
         <link rel="stylesheet" href="/css/main.css" type="text/css">
-        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/js/lib/jquery.js"></script>
         @yield('head')
     </head>
     <body>
+        <div class="modalOverlay is-hidden">
+            <div class="modalFormContainer">
+                @yield('forms')
+            </div>
+        </div>
         <div class="container">
             <div class="homebar"><a href="../">« Back</a></div>
         @yield('content')
